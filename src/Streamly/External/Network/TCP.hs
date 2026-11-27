@@ -5,7 +5,7 @@
 --
 -- What the network libraries of this family share: opening a TCP
 -- connection to a host by its name, listening and serving, and the
--- 'Transport' that protocols are written against.
+-- t'Transport' that protocols are written against.
 --
 -- > {-# LANGUAGE OverloadedRecordDot #-}
 -- > import Control.Exception (bracket)
