@@ -1,6 +1,6 @@
 cabal-version:   3.12
 name:            streamly-network-tcp
-version:         0.1.0.1
+version:         0.1.0.2
 synopsis:        TCP connections as Streamly streams, for clients and servers
 description:
   The ground under the Streamly network libraries of this family: opening
