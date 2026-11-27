@@ -13,16 +13,17 @@ ground under the network libraries of this family
 
 import Control.Exception (bracket)
 import Network.Socket (close)
-import Streamly.Data.Fold qualified as Fold
-import Streamly.Data.Stream qualified as Stream
-import Streamly.External.Network.TCP
+import Streamly.Data.Fold (drainMapM)
+import Streamly.Data.Stream (fold)
+import Streamly.External.Network.TCP (Transport (..), listen, serveConnections,
+                                      socketTransport)
 
 -- Send back to each client what it sends.
 main :: IO ()
 main = bracket (listen "127.0.0.1" 7000) close $ \listener ->
   serveConnections listener $ \peer ->
     let transport = socketTransport peer
-     in Stream.fold (Fold.drainMapM transport.send) transport.receive
+     in fold (drainMapM transport.send) transport.receive
 ```
 
 ## What it gives
